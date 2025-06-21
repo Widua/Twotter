@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Modal({ children, }: {
 	children: React.ReactNode
@@ -7,7 +8,7 @@ export default function Modal({ children, }: {
 		<div className='fixed w-screen h-screen bg-gray-900 '>
 			<div className="relative w-1/3 rounded-2xl top-50 h-2/3 mx-auto bg-black p-5">
 				<div className='flex flex-row items-center justify-center mb-4'>
-					<div className="text-2xl w-full">x</div>
+					<Link href="/" className='w-full text-2xl'><div>x</div></Link>
 					<div className='w-full flex justify-center'>
 						<Image
 							src="/twotterlogo.png"

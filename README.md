@@ -18,3 +18,9 @@
 * Test-Driven-Development on Backend. With TestContainers.
 * All frontend code, and most of Backend code will be written using my [Neovim Setup](https://github.com/Widua/kickstart.nvim)
 * No LLMS to generate code. In future CodeRabbit should be added for pull request checking.
+
+## Steps of project
+
+|No. | Name           | Details                          |
+|----|----------------|----------------------------------|
+|1   |Website skeleton| Create basic skeleton of website |  
