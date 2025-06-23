@@ -1,11 +1,16 @@
 "use client"
 import Modal from "@/components/ui/modal"
 import { useState } from 'react'
+import AuthInput from "@/components/ui/authInput"
 
 export default function Register() {
 	const months: readonly string[] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 	const daysInMonth = (year: number, month: number) => new Date(year, month, 0).getDate()
 	const [birthDate, setDate] = useState(new Date())
+	const [name, setName] = useState("")
+	const [email, setMail] = useState("")
+	const [password, setPassword] = useState("")
+	const [retypedPassword, setRetypedPassword] = useState("")
 
 	function dateUpdater(month: string, day: number, year: number) {
 		console.log(month)
@@ -16,12 +21,12 @@ export default function Register() {
 		<Modal>
 			<div>
 				<p className="font-bold text-center text-2xl">Create your account</p>
-				<input className='w-full p-2 mt-2 rounded-l border-2 border-gray-700 border-solid text-center text-white' type='text' placeholder='Name' />
-				<input className='w-full p-2 mt-2 rounded-l border-2 border-gray-700 border-solid text-center text-white' type='email' placeholder='Email' />
-				<p className="mt-8 font-bold">Date of birth</p>
+				<AuthInput inputType={'text'} placeholder="Name" onChange={setName} />
+				<AuthInput inputType={'email'} placeholder="Email" onChange={setMail} />
+				<p className="mt-6 font-bold">Date of birth</p>
 				<p className="text-sm text-gray-400">This will not be shown publicly. Confirm your own age, even if this account is for business, a pet, or something else</p>
 
-				<div className="flex flex-row mt-8">
+				<div className="flex flex-row mt-2">
 					<select name="monthSelector" onChange={e => dateUpdater(e.target.value, birthDate.getDay(), birthDate.getFullYear())} defaultValue="" className="p-2 mt-2 rounded-l bg-black border-2 border-gray-700 border-solid text-center text-white">
 						<option className="text-start" value="" defaultChecked hidden disabled>Month</option>
 						{
@@ -46,6 +51,10 @@ export default function Register() {
 							))
 						}
 					</select>
+				</div>
+				<div className="mt-8">
+					<AuthInput inputType={'password'} placeholder="Password" onChange={setPassword} />
+					<AuthInput inputType={'password'} placeholder="Retyped Password" onChange={setRetypedPassword} />
 				</div>
 			</div>
 		</Modal>
