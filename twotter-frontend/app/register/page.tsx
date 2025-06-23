@@ -38,8 +38,13 @@ export default function Register() {
 							))
 						}
 					</select>
-					<select defaultValue="" className="p-2 mt-2 rounded-l bg-black border-2 border-gray-700 border-solid text-center text-white" >
+					<select defaultValue="" onChange={e => dateUpdater(months[birthDate.getMonth() - 1], birthDate.getDay(), Number(e.target.value))} className="p-2 mt-2 rounded-l bg-black border-2 border-gray-700 border-solid text-center text-white" >
 						<option className="text-start" value="" defaultChecked hidden disabled>Year</option>
+						{
+							Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map((year: number) => (
+								<option className="text-start" key={year} value={year}>{year}</option>
+							))
+						}
 					</select>
 				</div>
 			</div>
