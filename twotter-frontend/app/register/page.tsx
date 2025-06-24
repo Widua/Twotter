@@ -3,7 +3,6 @@ import Modal from "@/components/ui/modal"
 import { useState } from 'react'
 import AuthInput from "@/components/ui/authInput"
 import Selector from "@/components/ui/selector"
-
 export default function Register() {
 	const months: readonly string[] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 	const daysInMonth = (year: number, month: number) => new Date(year, month, 0).getDate()
@@ -54,6 +53,7 @@ export default function Register() {
 					<AuthInput inputType={'password'} placeholder="Password" onChange={setPassword} />
 					<AuthInput inputType={'password'} placeholder="Retyped Password" onChange={setRetypedPassword} />
 				</div>
+				<button className='bg-white text-black mt-8 font-bold w-full rounded-xl p-2'>Next</button>
 			</div>
 		</Modal>
 	);
