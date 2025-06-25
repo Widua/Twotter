@@ -3,6 +3,8 @@ import Modal from "@/components/ui/modal"
 import { useState } from 'react'
 import AuthInput from "@/components/ui/authInput"
 import Selector from "@/components/ui/selector"
+import { signup } from "@/lib/actions/auth"
+
 export default function Register() {
 	const months: readonly string[] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 	const daysInMonth = (year: number, month: number) => new Date(year, month, 0).getDate()
