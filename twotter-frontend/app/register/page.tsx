@@ -4,6 +4,7 @@ import { useState } from 'react'
 import AuthInput from "@/components/ui/authInput"
 import Selector from "@/components/ui/selector"
 import { signup } from "@/lib/actions/auth"
+import ErrorMessage from "@/components/ui/errorMessage"
 
 export default function Register() {
 	const months: readonly string[] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
