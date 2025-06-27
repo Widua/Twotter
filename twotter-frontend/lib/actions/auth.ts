@@ -3,13 +3,13 @@ import { SignupFormSchema, SignupState } from "../definitions/signupDefinitions"
 
 let mockUserStore: Array<User> = Array.of({ username: "TestUser", password: "test123", email: "testuser@testing.com" })
 
-export async function signup(signUpData: { username: string, password: string, retypedPassword: string, email: string, birthDate: Date }, state: SignupState) {
+export async function signup(state: SignupState, signUpData: FormData) {
 	const validatedFields = SignupFormSchema.safeParse(
 		{
-			username: signUpData.username,
-			email: signUpData.email,
-			password: signUpData.password,
-			birthDate: signUpData.birthDate
+			username: signUpData.get('username'),
+			email: signUpData.get('email'),
+			password: signUpData.get('password'),
+			birthDate: signUpData.get('birthDate'),
 		}
 	)
 
@@ -19,7 +19,7 @@ export async function signup(signUpData: { username: string, password: string, r
 		}
 	}
 
-	if (signUpData.password !== signUpData.retypedPassword) {
+	if (signUpData.get('password') !== signUpData.get('retypedPassword')) {
 		return {
 			errors: [{ message: "Passwords should match!" }]
 		}

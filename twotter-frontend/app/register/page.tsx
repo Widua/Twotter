@@ -1,6 +1,6 @@
 "use client"
 import Modal from "@/components/ui/modal"
-import { useState } from 'react'
+import { useActionState, useState } from 'react'
 import AuthInput from "@/components/ui/authInput"
 import Selector from "@/components/ui/selector"
 import { signup } from "@/lib/actions/auth"
@@ -14,6 +14,8 @@ export default function Register() {
 	const [email, setMail] = useState("")
 	const [password, setPassword] = useState("")
 	const [retypedPassword, setRetypedPassword] = useState("")
+
+	const [state, action, pending] = useActionState(signup, undefined)
 
 	function dateUpdater(month: number, day: number, year: number) {
 		setDate(new Date(year, month, day))
@@ -30,33 +32,35 @@ export default function Register() {
 	return (
 		<Modal>
 			<div>
-				<p className="font-bold text-center text-2xl">Create your account</p>
-				<AuthInput inputType={'text'} placeholder="Name" onChange={setName} />
-				<AuthInput inputType={'email'} placeholder="Email" onChange={setMail} />
-				<p className="mt-6 font-bold">Date of birth</p>
-				<p className="text-sm text-gray-400">This will not be shown publicly. Confirm your own age, even if this account is for business, a pet, or something else</p>
-				<div className="flex overflow-y-visible flex-row mt-2">
-					<Selector
-						onChange={updateMonth}
-						placeholder="Month"
-						values={months}
-					/>
-					<Selector
-						onChange={updateDay}
-						placeholder="Day"
-						values={Array.from({ length: daysInMonth(birthDate.getFullYear(), birthDate.getMonth()) }, (_, i) => i + 1).map((num) => num.toString())}
-					/>
-					<Selector
-						onChange={updateYear}
-						placeholder="Year"
-						values={Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map((num) => num.toString())}
-					/>
-				</div>
-				<div className="mt-8">
-					<AuthInput inputType={'password'} placeholder="Password" onChange={setPassword} />
-					<AuthInput inputType={'password'} placeholder="Retyped Password" onChange={setRetypedPassword} />
-				</div>
-				<button className='bg-white text-black mt-8 font-bold w-full rounded-xl p-2'>Next</button>
+				<form>
+					<p className="font-bold text-center text-2xl">Create your account</p>
+					<AuthInput inputType={'text'} placeholder="Name" onChange={setName} />
+					<AuthInput inputType={'email'} placeholder="Email" onChange={setMail} />
+					<p className="mt-6 font-bold">Date of birth</p>
+					<p className="text-sm text-gray-400">This will not be shown publicly. Confirm your own age, even if this account is for business, a pet, or something else</p>
+					<div className="flex overflow-y-visible flex-row mt-2">
+						<Selector
+							onChange={updateMonth}
+							placeholder="Month"
+							values={months}
+						/>
+						<Selector
+							onChange={updateDay}
+							placeholder="Day"
+							values={Array.from({ length: daysInMonth(birthDate.getFullYear(), birthDate.getMonth()) }, (_, i) => i + 1).map((num) => num.toString())}
+						/>
+						<Selector
+							onChange={updateYear}
+							placeholder="Year"
+							values={Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map((num) => num.toString())}
+						/>
+					</div>
+					<div className="mt-8">
+						<AuthInput inputType={'password'} placeholder="Password" onChange={setPassword} />
+						<AuthInput inputType={'password'} placeholder="Retyped Password" onChange={setRetypedPassword} />
+					</div>
+					<button type="submit" className='bg-white text-black mt-8 font-bold w-full rounded-xl p-2'>Next</button>
+				</form>
 			</div>
 		</Modal>
 	);
