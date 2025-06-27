@@ -32,10 +32,12 @@ export default function Register() {
 	return (
 		<Modal>
 			<div>
-				<form>
+				<form action={action}>
 					<p className="font-bold text-center text-2xl">Create your account</p>
 					<AuthInput inputType={'text'} placeholder="Name" onChange={setName} />
+					<ErrorMessage errors={state?.errors.username} />
 					<AuthInput inputType={'email'} placeholder="Email" onChange={setMail} />
+					<ErrorMessage errors={state?.errors.email} />
 					<p className="mt-6 font-bold">Date of birth</p>
 					<p className="text-sm text-gray-400">This will not be shown publicly. Confirm your own age, even if this account is for business, a pet, or something else</p>
 					<div className="flex overflow-y-visible flex-row mt-2">
@@ -55,11 +57,13 @@ export default function Register() {
 							values={Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map((num) => num.toString())}
 						/>
 					</div>
+					<ErrorMessage errors={state?.errors.date} />
 					<div className="mt-8">
 						<AuthInput inputType={'password'} placeholder="Password" onChange={setPassword} />
 						<AuthInput inputType={'password'} placeholder="Retyped Password" onChange={setRetypedPassword} />
 					</div>
-					<button type="submit" className='bg-white text-black mt-8 font-bold w-full rounded-xl p-2'>Next</button>
+					<ErrorMessage errors={state?.errors.password} />
+					<button disabled={pending} type="submit" className='bg-white text-black mt-8 font-bold w-full rounded-xl p-2'>Next</button>
 				</form>
 			</div>
 		</Modal>

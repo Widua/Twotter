@@ -21,7 +21,9 @@ export async function signup(state: SignupState, signUpData: FormData) {
 
 	if (signUpData.get('password') !== signUpData.get('retypedPassword')) {
 		return {
-			errors: [{ message: "Passwords should match!" }]
+			errors: {
+				password: ["Paswords should match"]
+			}
 		}
 	}
 

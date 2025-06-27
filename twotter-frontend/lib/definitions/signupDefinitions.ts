@@ -30,7 +30,7 @@ export const SignupFormSchema = z.object({
 export type SignupState = |
 {
 	errors?: {
-		name?: string[]
+		username?: string[]
 		password?: string[]
 		email?: string[]
 		date?: string[]
