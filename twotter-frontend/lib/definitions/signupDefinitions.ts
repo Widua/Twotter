@@ -22,7 +22,8 @@ export const SignupFormSchema = z.object({
 		.regex(/[a-zA-Z]/, { message: "Contain at least one letter." })
 		.regex(/[0-9]/, { message: "Contain at least one number." })
 		.trim(),
-	date: z
+	birthDate: z
+
 		.date()
 		.max(sixteenYearsOldConstrain(), { message: "You must have at least 16 years" })
 })

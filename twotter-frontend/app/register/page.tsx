@@ -1,6 +1,6 @@
 "use client"
 import Modal from "@/components/ui/modal"
-import { useActionState, useState } from 'react'
+import { FormEvent, useActionState, useState } from 'react'
 import AuthInput from "@/components/ui/authInput"
 import Selector from "@/components/ui/selector"
 import { signup } from "@/lib/actions/auth"
@@ -10,12 +10,11 @@ export default function Register() {
 	const months: readonly string[] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 	const daysInMonth = (year: number, month: number) => new Date(year, month, 0).getDate()
 	const [birthDate, setDate] = useState(new Date())
-	const [name, setName] = useState("")
+	const [username, setName] = useState("")
 	const [email, setMail] = useState("")
 	const [password, setPassword] = useState("")
 	const [retypedPassword, setRetypedPassword] = useState("")
 
-	const [state, action, pending] = useActionState(signup, undefined)
 
 	function dateUpdater(month: number, day: number, year: number) {
 		setDate(new Date(year, month, day))
@@ -29,10 +28,17 @@ export default function Register() {
 	function updateYear(year: string) {
 		dateUpdater(birthDate.getMonth(), birthDate.getDay(), Number(year))
 	}
+
+	const [state, action, pending] = useActionState(signup, undefined)
+
+	const handleFormSubmit = () => {
+		action({ username: username, password: password, retypedPassword: retypedPassword, birthDate: birthDate, email: email, })
+	}
+
 	return (
 		<Modal>
-			<div>
-				<form action={action}>
+			<div className="relative">
+				<form action={handleFormSubmit}>
 					<p className="font-bold text-center text-2xl">Create your account</p>
 					<AuthInput inputType={'text'} placeholder="Name" onChange={setName} />
 					<ErrorMessage errors={state?.errors.username} />
@@ -57,7 +63,7 @@ export default function Register() {
 							values={Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i).map((num) => num.toString())}
 						/>
 					</div>
-					<ErrorMessage errors={state?.errors.date} />
+					<ErrorMessage errors={state?.errors.birthDate} />
 					<div className="mt-8">
 						<AuthInput inputType={'password'} placeholder="Password" onChange={setPassword} />
 						<AuthInput inputType={'password'} placeholder="Retyped Password" onChange={setRetypedPassword} />

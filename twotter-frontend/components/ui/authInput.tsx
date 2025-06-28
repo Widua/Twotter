@@ -16,6 +16,7 @@ export default function AuthInput(
 				type={inputType}
 				placeholder={placeholder}
 				onChange={e => onChange(e.target.value)}
+				name={placeholder.toLowerCase()}
 			/>
 		</>
 	)
