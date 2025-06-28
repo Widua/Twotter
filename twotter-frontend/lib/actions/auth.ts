@@ -1,10 +1,10 @@
 import { User } from "../types/authTypes"
 import { SignupFormSchema, SignupState } from "../definitions/signupDefinitions";
-
+import { LoginFormSchema, LoginState } from "../definitions/loginDefinitions";
+import { redirect } from "next/navigation";
 let mockUserStore: Array<User> = Array.of({ username: "TestUser", password: "test123", email: "testuser@testing.com" })
 
 export async function signup(state: SignupState, signUpData: { username: string, password: string, retypedPassword: string, email: string, birthDate: Date }) {
-	console.log(signUpData)
 	const validatedFields = SignupFormSchema.safeParse(
 		{
 			username: signUpData.username,
@@ -33,9 +33,38 @@ export async function signup(state: SignupState, signUpData: { username: string,
 	/*
 	 * TODO: There will be connection to database, etc. for now the Frontend is only a skeleton.
 	 */
-
+	redirect('/login')
 }
 
-export async function login(loginData: { username: string, password: string }) {
+export async function login(state: LoginState, loginData: { username: string, password: string }) {
+	const validatedFields = LoginFormSchema.safeParse(
+		{
+			username: loginData.username,
+			password: loginData.password
+		}
+	)
 
+	if (!validatedFields.success) {
+		return {
+			errors: validatedFields.error.flatten().fieldErrors,
+		}
+	}
+
+	const found = mockUserStore.find((user) => user.username == validatedFields.data.username)
+	if (!found) {
+		return {
+			errors: {
+				username: ["User not found"]
+			}
+		}
+	}
+	if (found.password !== validatedFields.data.password) {
+		return {
+			errors: {
+				password: ["Wrong password. Try again."]
+			}
+		}
+	}
+	// TODO: There will be implemented connection with database, userService. For now the frontend is only a skeleton.
+	redirect('/')
 }

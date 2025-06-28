@@ -1,6 +1,6 @@
 export default function ErrorMessage({ errors }: { errors: readonly string[] | undefined }) {
 	return (
-		<div className="w-full p-2">
+		<div hidden={errors == undefined} className="w-full p-2">
 			{
 
 				(errors != undefined) && errors.map((message, i) => (
