@@ -2,7 +2,8 @@ import { User } from "../types/authTypes"
 import { SignupFormSchema, SignupState } from "../definitions/signupDefinitions";
 import { LoginFormSchema, LoginState } from "../definitions/loginDefinitions";
 import { redirect } from "next/navigation";
-let mockUserStore: Array<User> = Array.of({ username: "TestUser", password: "test123", email: "testuser@testing.com" })
+import { createSession } from "../session";
+let mockUserStore: Array<User> = Array.of({ userId: 1, username: "TestUser", password: "test123", email: "testuser@testing.com" })
 
 export async function signup(state: SignupState, signUpData: { username: string, password: string, retypedPassword: string, email: string, birthDate: Date }) {
 	const validatedFields = SignupFormSchema.safeParse(
@@ -28,7 +29,7 @@ export async function signup(state: SignupState, signUpData: { username: string,
 	}
 
 
-	mockUserStore.push({ username: validatedFields.data.username, password: validatedFields.data.password, email: validatedFields.data.email })
+	mockUserStore.push({ userId: mockUserStore.length + 1, username: validatedFields.data.username, password: validatedFields.data.password, email: validatedFields.data.email })
 
 	/*
 	 * TODO: There will be connection to database, etc. for now the Frontend is only a skeleton.
@@ -66,5 +67,6 @@ export async function login(state: LoginState, loginData: { username: string, pa
 		}
 	}
 	// TODO: There will be implemented connection with database, userService. For now the frontend is only a skeleton.
+	await createSession({ userId: found.userId, username: found.username, email: found.email })
 	redirect('/')
 }

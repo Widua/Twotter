@@ -1,7 +1,5 @@
-export type User = {
+export type SessionSchema = {
 	userId: number
 	username: string
-	password: string
 	email: string
-
 }
