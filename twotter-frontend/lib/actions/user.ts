@@ -70,3 +70,11 @@ export async function login(state: LoginState, loginData: { username: string, pa
 	await createSession({ userId: found.userId, username: found.username, email: found.email })
 	redirect('/')
 }
+
+export function findUser(userId: number): User {
+	const found = mockUserStore.find((user) => user.userId == userId);
+	if (!found) {
+		throw new Error("User is not found")
+	}
+	return found
+}

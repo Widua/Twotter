@@ -4,7 +4,7 @@ import Link from 'next/link'
 import AuthInput from '@/components/ui/auth/authInput'
 import { useActionState, useState } from 'react'
 import Modal from '@/components/ui/auth/modal'
-import { login } from '@/lib/actions/auth'
+import { login } from '@/lib/actions/user'
 import ErrorMessage from '@/components/ui/auth/errorMessage'
 export default function Page() {
 	const [username, setLogin] = useState("")

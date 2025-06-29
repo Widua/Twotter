@@ -3,7 +3,7 @@ import Modal from "@/components/ui/auth/modal"
 import { FormEvent, useActionState, useState } from 'react'
 import AuthInput from "@/components/ui/auth/authInput"
 import Selector from "@/components/ui/auth/selector"
-import { signup } from "@/lib/actions/auth"
+import { signup } from "@/lib/actions/user"
 import ErrorMessage from "@/components/ui/auth/errorMessage"
 
 export default function Register() {
