@@ -1,10 +1,10 @@
 "use client"
-import Modal from "@/components/ui/modal"
+import Modal from "@/components/ui/auth/modal"
 import { FormEvent, useActionState, useState } from 'react'
-import AuthInput from "@/components/ui/authInput"
-import Selector from "@/components/ui/selector"
+import AuthInput from "@/components/ui/auth/authInput"
+import Selector from "@/components/ui/auth/selector"
 import { signup } from "@/lib/actions/auth"
-import ErrorMessage from "@/components/ui/errorMessage"
+import ErrorMessage from "@/components/ui/auth/errorMessage"
 
 export default function Register() {
 	const months: readonly string[] = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]

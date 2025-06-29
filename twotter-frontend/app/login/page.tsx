@@ -1,11 +1,11 @@
 "use client"
 
 import Link from 'next/link'
-import AuthInput from '@/components/ui/authInput'
+import AuthInput from '@/components/ui/auth/authInput'
 import { useActionState, useState } from 'react'
-import Modal from '@/components/ui/modal'
+import Modal from '@/components/ui/auth/modal'
 import { login } from '@/lib/actions/auth'
-import ErrorMessage from '@/components/ui/errorMessage'
+import ErrorMessage from '@/components/ui/auth/errorMessage'
 export default function Page() {
 	const [username, setLogin] = useState("")
 	const [password, setPassword] = useState("")
