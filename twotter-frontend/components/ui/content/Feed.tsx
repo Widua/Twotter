@@ -1,15 +1,15 @@
 import { getFeed } from "@/lib/actions/feed"
-
+import PostPage from '@/components/ui/content/Post'
 export default function Feed() {
 
 	const feedArr = getFeed();
 
 	return (
-		<div className="w-full">
+		<div className="w-full ">
 			{
 				feedArr.map(
-					(post) => (
-						<p>{post.postingUserId}</p>
+					(post, i) => (
+						<PostPage key={i} postData={post} />
 					)
 				)
 			}

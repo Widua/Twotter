@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 import { Post } from "../types/postTypes";
 
-const mockedFeedStore: Array<Post> = Array.of({ postingUserId: 1, postId: '000001', content: "Helo", timeAdded: new Date() })
+const mockedFeedStore: Array<Post> = Array.of({ postingUserId: 1, postId: '000001', content: "Helo", timeAdded: new Date(2025, 3, 12, 12, 12) }, { postingUserId: 1, postId: '000002', content: "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary", timeAdded: new Date(2025, 3, 12, 12, 12) })
 
 export function getFeed(): Array<Post> {
 	return mockedFeedStore

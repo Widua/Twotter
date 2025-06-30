@@ -1,6 +1,6 @@
 export default function Menu() {
 	return (
-		<div className="w-full">
+		<div className="w-1/5">
 		</div>
 	)
 }
