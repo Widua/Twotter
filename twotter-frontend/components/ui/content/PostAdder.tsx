@@ -21,7 +21,7 @@ export default function PagePostAdder({ userId, username }: { userId: number, us
 						<textarea onChange={(e) => setPostContent(e.target.value)} className="w-full h-20 max-h-32 border-2 border-solid border-gray-700 resize-none" />
 						<ErrorMessage errors={state?.errors.content} />
 					</div>
-					<div className="w-full"><button className="float-end mr-2 text-black bg-white py-2 px-6 rounded-4xl"> Send </button></div>
+					<div className="w-full"><button disabled={pending} className="float-end mr-2 text-black bg-white py-2 px-6 rounded-4xl"> Send </button></div>
 				</form>
 			</div>
 		</div>

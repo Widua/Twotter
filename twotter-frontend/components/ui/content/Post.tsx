@@ -29,7 +29,7 @@ export default function PagePost({
 }: { postData: Post }) {
 	const userName: string = findUser(postData.postingUserId).username
 	return (
-		<div className="flex flex-row w-full items-center h-32 justify-center">
+		<div className="flex mt-4 flex-row w-full items-center h-32 justify-center">
 			<Image width={30} height={30} src={image} className="rounded-full mr-4" alt="fakeUserImg" />
 
 			<div className="flex flex-col w-3/4">

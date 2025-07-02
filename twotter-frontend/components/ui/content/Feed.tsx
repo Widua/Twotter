@@ -1,8 +1,8 @@
 import { getFeed } from "@/lib/actions/feed"
 import PostPage from '@/components/ui/content/Post'
-export default function Feed() {
+export default async function Feed() {
 
-	const feedArr = getFeed();
+	const feedArr = await getFeed();
 
 	return (
 		<div className="w-full ">
