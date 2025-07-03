@@ -16,7 +16,7 @@
 
 ## Constrains of project
 * Test-Driven-Development on Backend. With TestContainers.
-* All frontend code will be written using my [Neovim Setup](https://github.com/Widua/kickstart.nvim). Backend will be written in IntelIJ(my Neovim setup is still not ready for Java)
+* All frontend code will be written using my [Neovim Setup](https://github.com/Widua/kickstart.nvim). 
 * No LLMS to generate code. In future CodeRabbit should be added for pull request checking.
 
 ## Steps of project
