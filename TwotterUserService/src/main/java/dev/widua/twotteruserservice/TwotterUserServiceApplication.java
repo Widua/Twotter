@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TwotterUserServiceApplication {
 
     public static void main(String[] args) {
-        System.out.println(System.getenv("POSTGRES_PASSWORD"));
         SpringApplication.run(TwotterUserServiceApplication.class, args);
     }
 
