@@ -4,4 +4,4 @@ WORKDIR /appliction
 COPY gradlew *.gradle ./
 COPY gradle/ ./gradle
 COPY src ./src
-CMD ["./gradlew","bootRun"]
+CMD ["./gradlew","test"]
