@@ -2,9 +2,11 @@ package dev.widua.twotteruserservice.service;
 
 import dev.widua.twotteruserservice.model.TwotterUser;
 import dev.widua.twotteruserservice.repository.TwotterUserRepository;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -15,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
+@ExtendWith(MockitoExtension.class)
 public class TwotterUserServiceTest {
 
     @MockitoBean
@@ -24,6 +27,7 @@ public class TwotterUserServiceTest {
     private TwotterUserServiceImpl service;
 
     @Test
+    @DisplayName("Finding user by username")
     public void getUserByUsernameAndHeExists(){
         Integer userId = 1;
         String username = "testUser";
@@ -38,6 +42,7 @@ public class TwotterUserServiceTest {
     }
 
     @Test
+    @DisplayName("Finding user by username, but he not exist")
     public void getUserByUsernameAndHeDoesNotExistThrowsError(){
         String username = "testUser";
         when(repository.getTwotterUserByUsername(username)).thenReturn(Optional.empty());
@@ -47,6 +52,7 @@ public class TwotterUserServiceTest {
     }
 
     @Test
+    @DisplayName("Adding user to the database")
     public void addingUserTest(){
         Integer userId = 1;
         String username = "testUser";
