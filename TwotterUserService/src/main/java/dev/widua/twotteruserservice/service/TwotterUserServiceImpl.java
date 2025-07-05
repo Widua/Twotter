@@ -1,0 +1,25 @@
+package dev.widua.twotteruserservice.service;
+
+import dev.widua.twotteruserservice.model.TwotterUser;
+import dev.widua.twotteruserservice.repository.TwotterUserRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TwotterUserServiceImpl implements TwotterUserService{
+
+    private TwotterUserRepository repository;
+
+    public TwotterUserServiceImpl(TwotterUserRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public void addUser(TwotterUser user) {
+
+    }
+
+    @Override
+    public TwotterUser getUserByUsername(String username) {
+        return null;
+    }
+}
